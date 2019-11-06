@@ -60,7 +60,13 @@
                   }
                 })
             } else {
+
+              if (err.response.status === 403) {
+                // location.href = err.response.data.data.url;
+                location.href = 'http://yiban.sust.edu.cn/yibanapi/?backurl=http://192.168.0.110:8888/blank';
+              } else {
                 this.show(res.data.errorMsg);
+              }
             }
         })
         .catch((err) => {

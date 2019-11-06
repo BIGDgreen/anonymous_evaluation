@@ -83,11 +83,16 @@
             })
             .catch((err) => {
               this.loading = false;
-              Toast({
-                message: "网络连接错误！",
-                position: 'middle',
-                duration: 5000
-              });
+              if (err.response.status === 403) {
+                // location.href = err.response.data.data.url;
+                location.href = 'http://yiban.sust.edu.cn/yibanapi/?backurl=http://192.168.0.110:8888/blank';
+              } else {
+                Toast({
+                  message: "网络连接错误！",
+                  position: 'middle',
+                  duration: 5000
+                });
+              }
             });
         this.input_comment = this.input_com;
         this.input_comment = this.input_comment.replace(/\s/g, '')
